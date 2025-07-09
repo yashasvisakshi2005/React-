@@ -19,6 +19,21 @@ let prompt =document.querySelector(".prompt")
 let chatbtn = document.querySelector(".input-area")
 let chatContainer = document.querySelector(".chat-container")
 let userMessage = "";
+let Api_url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyDI9egPHA38sEo1RIbvcsDgengz-KNH0XM";
+
+async function generateApiResponse(aiChatBox){
+  const textElement=aiChatBox.querySelector(".text")
+  try{
+    const response=await fetch(Api_url,{
+      method:"POST",
+      headers:{"Content-Type":}
+    })
+  }
+}
+
+
+
+
 
 
  function createChatBox(html,className){
@@ -27,7 +42,15 @@ let userMessage = "";
   div.innerHTML=html;
   return div
  }
-  
+
+
+
+  function showLoading(){
+     const html = '<p class="text"></p>'
+     let aiChatBox=createChatBox(html,"ai-chatbox")
+     chatContainer.appendChild(aiChatBox)
+     generateApiResponse(aiChatBox)
+  }
 
 
 
